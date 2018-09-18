@@ -4,7 +4,7 @@ export const FETCH_POSTS = 'fetch_posts';
 
 
 const root_url='http://reduxblog.herokuapp.com/api';
-const API_KEY='?key=Keklords1234'
+const API_KEY='?key=Keklords1234';
 
 export function fetchPosts(){
 

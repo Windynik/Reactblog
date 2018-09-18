@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import {BrowserRouter, Route} from 'react-router-dom';
-import promise from 'react-promise'
+import promise from 'redux-promise'
 import PostIndex from './components/posts_index'
 import reducers from './reducers';
 
@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
     <div>
-      <Route path='/' component ={PostIndex} />
+      <Route path="/" component={PostIndex} />
     </div>
     </BrowserRouter>
   </Provider>
