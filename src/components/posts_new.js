@@ -26,7 +26,7 @@ class PostNew extends Component{
                                 //the ternary operator is done because the if is not being rendered.
     }
     onSubmit(values){
-        this.props.createPost(values);
+        this.props.createPost(values, ()=> this.props.history.push('/'));
     }
     render(){
         const {handleSubmit}=this.props;
