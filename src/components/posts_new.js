@@ -13,12 +13,18 @@ class PostNew extends Component{
                 type="text"
                 {...field.input}            //this has pregenerated es6 knowledge
                 />
-                {field.meta.errors}          
+                {field.meta.touched ? field.meta.error : ''}       
+                
+                }        
             </div>
         )                      //^ that is done by redux form , for error handling!
+                                //the ternary operator is done because the if is not being rendered.
     }
-    
+    onSubmit(values){
+        console.log(values)
+    }
     render(){
+        const {handleSubmit}=this.props;
         return(
             <div>
                 <div className='text-xs-right'>
@@ -26,7 +32,7 @@ class PostNew extends Component{
                     Back to main
                     </Link>
                 </div>
-            <form>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}> 
                 <Field
                 label='Title of the post!'
                 name="title"
@@ -42,7 +48,7 @@ class PostNew extends Component{
                 name='content'
                 component={this.renderField}
                 />
-
+                <button type="submit" className="btn btn-primary">Submit </button>
             </form>
             </div>
         )
@@ -52,7 +58,7 @@ class PostNew extends Component{
 function validate(values){
     const errors={};
 
-    if(!values.title || values.title.length < 3){
+    if(!values.title||values.title.length<3){
         errors.title="Input a title that is longer is than 3 letters!"
     };
     if(!values.categories){
